@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Final Project</title>
+  
+    <meta name = "author" content = "Ysabelle Ho and Wong Yi Jie">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+<script src="https://d3js.org/d3.v6.js"></script>
+
+<h1>Prices of homes are soaring. Is the end upon us?</h1>
+
+<h2>Why focus on HDB flats, and specifically first-generation resale flats?</h2>
+
+<p> 80% of Singapore's population resides in HDB flats. While HDB was birthed as a social policy to provide affordable 
+    housing to Singapore Citizens/Permanent Residents, opportunistic flat owners have been rapidly selling the Build-to-Order (BTO) flats once 
+    the Minimum Occupation Period has been reached for a windfall capital gain. These data visualizations seek to shed light on what the market has 
+    been up to recently.</p>
+
+<p>The Minimum Occupation Period (MOP) for HDB flats was introduced to curtail the rapid selling of HDB flats by individuals 
+  seeking to make a quick profit. Today, the MOP for resale flats is <strong>five years</strong>, meaning that flat owners that bought their 
+  flats from HDB will have to 
+  <a href="https://www.hdb.gov.sg/residential/selling-a-flat/eligibility" title="MOP Eligibility" target="_blank" class="w3-hover-text-green">occupy the flat for five years</a>
+  before it can be sold on the resale market.
+  HDB flats are sold on a 99-year leasehold basis. Using transaction data from Jan 2017 to Dec 2022, we analyze flats with a <strong>remaining lease period of 90 years and above</strong>. 
+  These flats would have recently fulfilled the MOP requirement before the flat can be sold on the resale market and would 
+  be the first resale transaction of the flat in the open market (before the next 5-year MOP is reached). </p>
+  
+  <div id="rectchart"></div>
+
+<p>This data visualization is relevant to those considering to purchase first-generation resale flats, which still bear many similarities 
+  to BTO flats except that these potential buyers need not wait for the project to be built. 
+
+<h2>Recent trends in the resale market</h2>
+  
+<p>Prices aren’t just increasing, but the flat sizes have been decreasing. As a result, the cost of purchasing a square metre 
+  of property has been increasing over time across the areas in Singapore. Of interest is <strong>Central area and Bishan</strong>, where no 
+  sale of MOPs have taken place since 2006 as there have been no new BTO projects at those mature estates in the past decade. 
+The <strong>scarcity of young flats available</strong> on the market in these areas may thus push resale prices up. </p>
+
+<div id="scatterplot_price_sqft_against_year"></div>
+
+<div>
+  <select id="town-select3">
+    <option value="all" selected>All Towns</option>
+    <option value="ANG MO KIO">ANG MO KIO</option>
+    <option value="BEDOK">BEDOK</option>
+    <option value="BISHAN">BISHAN</option>    
+    <option value="BUKIT MERAH">BUKIT MERAH</option>
+    <option value="BUKIT PANJANG">BUKIT PANJANG</option>
+    <option value="CENTRAL AREA">CENTRAL AREA</option>
+    <option value="CLEMENTI">CLEMENTI</option>
+    <option value="HOUGANG">HOUGANG</option>
+    <option value="JURONG WEST">JURONG WEST</option>
+    <option value="JURONG EAST">JURONG EAST</option>
+    <option value="KALLANG/WHAMPOA">KALLANG/WHAMPOA</option>
+    <option value="PUNGGOL">PUNGGOL</option>
+    <option value="QUEENSTOWN">QUEENSTOWN</option>
+    <option value="SEMBAWANG">SEMBAWANG</option>
+    <option value="SENGKANG">SENGKANG</option>
+    <option value="TAMPINES">TAMPINES</option>
+    <option value="TOA PAYOH">TOA PAYOH</option>
+    <option value="YISHUN">YISHUN</option>
+    <option value="CHOA CHU KANG">CHOA CHU KANG</option>
+    <option value="GEYLANG">GEYLANG</option>
+  </select>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<h2>Strategies to tide us through</h2>
+
+<p>However, in the face of rising prices, buyers are not helpless. Below are some questions we sought to explore to better understand the market for such flats. 
+
+  The prices of flats typically vary because of the following reasons: 
+  
+<h3>What to buy</h3>
+  
+<div id="scatterplot_price_against_year"></div>
+
+<div>
+  <select id="flat-select2">
+    <option value="all" selected>All Flat Types</option>
+    <option value="2 ROOM">2 ROOM</option>
+    <option value="3 ROOM">3 ROOM</option>
+    <option value="4 ROOM">4 ROOM</option>    
+    <option value="5 ROOM">5 ROOM</option>
+  </select>
+</div>
+
+<div>
+  <select id="town-select2">
+    <option value="all" selected>All Towns</option>
+    <option value="ANG MO KIO">ANG MO KIO</option>
+    <option value="BEDOK">BEDOK</option>
+    <option value="BISHAN">BISHAN</option>    
+    <option value="BUKIT MERAH">BUKIT MERAH</option>
+    <option value="BUKIT PANJANG">BUKIT PANJANG</option>
+    <option value="CENTRAL AREA">CENTRAL AREA</option>
+    <option value="CLEMENTI">CLEMENTI</option>
+    <option value="HOUGANG">HOUGANG</option>
+    <option value="JURONG WEST">JURONG WEST</option>
+    <option value="JURONG EAST">JURONG EAST</option>
+    <option value="KALLANG/WHAMPOA">KALLANG/WHAMPOA</option>
+    <option value="PUNGGOL">PUNGGOL</option>
+    <option value="QUEENSTOWN">QUEENSTOWN</option>
+    <option value="SEMBAWANG">SEMBAWANG</option>
+    <option value="SENGKANG">SENGKANG</option>
+    <option value="TAMPINES">TAMPINES</option>
+    <option value="TOA PAYOH">TOA PAYOH</option>
+    <option value="YISHUN">YISHUN</option>
+    <option value="CHOA CHU KANG">CHOA CHU KANG</option>
+    <option value="GEYLANG">GEYLANG</option>
+  </select>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+
+<h3><a href="./monthtrial.html">When to buy</a></h3>
+In understanding the market for first-generation resale flats, we are not only concerned about the price but also the <strong>quantity of flats</strong> transacted.
+We examine whether month of transaction plays a part. ie whether there is a "hot" month in which buyers and sellers are very eager to exchange hands on the property. 
+
+<div id="months"></div>
+
+From the graph above, we can tell that while there is no obvious pattern, it appears that <strong>H2</strong> of each year is a more popular time for property to exchange hands.
+Although COVID restrictions in 2020 resulted in only a handful of property being transacted in Apr/May 2020, the number of transactions <strong>increased thereafter and remained high</strong>,
+with a monthly count of above 500 consistently. 
+February appears to have the <strong>least overall number of transactions</strong>, which could be due to the fewer number of days in the month, but also because it coincides with festivities like Chinese New Year,
+ in which people are less likely to exchange hands on a property. 
+
+ <br>
+<br>
+<br>
+<br>
+
+<h2>Concluding thoughts</h2>
+
+<p>Although first-generation resale flats it <strong>does not require balloting or a long waiting time</strong> as opposed to BTO flats, there are a number of downsides. 
+  The price of such flats are <strong>increasing</strong>, and this is a trend we observe in most HDB towns. In addition, the <strong>large number of flats being transacted at high prices across time</strong> suggest that
+  the demand for such flats are very strong. For those that can afford to wait, BTO flats may be a more affordable option given the current resale climate. 
+</p>
+
+<script>
+  // set the dimensions and margins of the graph
+  const margin = {top: 10, right: 250, bottom: 50, left: 80},
+        width = 1000 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+</script>
+
+<script src="js file 0.js"></script>
+<script src="js file 1.js"></script>
+<script src="js file 2.js"></script>
+<script src="js file 3.js"></script>
+
+</body>
+
+<div id="footer">
+  <h4>Data Source: HDB Resale Flat data is obtained from <a href=https://data.gov.sg/dataset/resale-flat-prices>data.gov.sg</a>
+  <h4>Project by: Ysabelle Ho (1007360) and Wong Yi Jie (1007356) </h4>
+
+</div>
+
+</body>
+</html>
